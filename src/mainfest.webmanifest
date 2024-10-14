@@ -1,0 +1,9 @@
+{
+    "name": "offlinetool",
+    "short_name": "Offlinetool",
+    "theme_color": "#1976d2",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/"
+  }
