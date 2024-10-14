@@ -1,0 +1,96 @@
+.logo {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1.2rem;
+    // padding: 0.8rem 0;
+}
+
+.logo img {
+    width: 100%;
+    // max-width: 150px;
+    height: 2.4rem;
+}
+
+ul {
+    display: flex;
+    gap: 10px;
+}
+
+.header .side-navs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.header .side-navs .raw {
+    color: #9E91D2;
+}
+
+.header p {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    padding-right: 20px;
+}
+
+.mat-mdc-tab:not(.mdc-tab--stacked) {
+    height: 22px;
+}
+
+.mat-mdc-tab .mdc-tab-indicator__content--underline {
+    border-color: #78e3db;
+}
+
+.DeviceMasterManagement_Wrap ul.nav {
+    position: relative;
+    padding-right: 1rem;
+    // width: 100%;
+}
+
+.DeviceMasterManagement_Wrap ul.nav li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DeviceMasterManagement_Wrap ul.nav li a {
+    color: #6a6a6a;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 20px;
+}
+
+.DeviceMasterManagement_Wrap ul.nav li a:hover {
+    color: #9E91D2;
+    background-color: #F1F1F1;
+    // font-weight: 600;
+}
+
+.DeviceMasterManagement_Wrap ul.nav li a.active {
+    color: #9E91D2;
+    background-color: #F1F1F1;
+    font-weight: 600;
+}
+
+.DeviceMasterManagement_Wrap .tabs_contentWrap {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+    flex-direction: column;
+}
+
+.roles_menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 12px 0;
+    background-color: #3C3A57;
+}

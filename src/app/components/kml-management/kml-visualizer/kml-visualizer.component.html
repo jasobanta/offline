@@ -1,0 +1,217 @@
+<div class="kml-container">
+    <!-- <div class="heading">
+        <h1>KML Visualizer</h1>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-4 side-form">
+            <ul ngbNav #nav="ngbNav" class="nav-tabs">
+                <li ngbNavItem>
+                    <a ngbNavLink>Information</a>
+                    <ng-template ngbNavContent>
+                        <form [formGroup]="myForm">
+                            <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <label for="fileType" class="form-label">Center Line</label>
+                                <input type="file"  (change)="onFileSelected($event)" multiple="multiple" accept=".kml"
+                                class="form-control" formControlname="kml"/>
+                              
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="fileType" class="form-label">ROW</label>
+                                <input type="file"  (change)="onFileSelected($event)" multiple="multiple" accept=".kml"
+                                class="form-control" formControlname="kml"/>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="fileType" class="form-label">Chainage</label>
+                                <input type="file"  (change)="onFileSelected($event)" multiple="multiple" accept=".kml"
+                                class="form-control" formControlname="kml"/>
+                            </div>
+                        </div>
+                            <!-- <div class="mb-3">
+                                <label for="fileType" class="form-label">SOP Parameter (Height)</label>
+                                <input #heightInput type="text" class="form-control">
+                            </div> -->
+                            <div class="topbar-sub">
+                                <div class="dataWrapItem">
+                                    <p class="titleHeader">
+                                        <b>SOP Parameter</b> <span>SOP Value</span>
+                                    </p>
+                                    <p>
+                                        <b>Drone Speed</b>
+                                        <span>5 m/s</span>
+                                    </p>
+                                    <p>
+                                        <b>Drone Height</b>
+                                        <!-- <span>30 mtrs</span> -->
+                                         <span><input #heightInput type="text"  [(ngModel)]="heightValue"  [ngModelOptions]="{standalone: true}"></span>
+                                    </p>
+                                    <p>
+                                        <b>Drone Camera</b> <span>20 MP</span>
+                                    </p>
+                                    <p>
+                                        <b>Image Type</b>
+                                        <span>JPEG</span>
+                                    </p>
+                                    <p>
+                                        <b>Drone Angle</b>
+                                        <span>90 Deg. NADIR</span>
+                                    </p>
+                                    <p>
+                                        <b>Flight Pattern</b> <span>Single Lap</span>
+                                    </p>
+                                    <p>
+                                        <b>Overlap in Images</b>
+                                        <span>85 %</span>
+                                    </p>
+                                    <p>
+                                        <b>Coverage</b> <span>20 km</span>
+                                    </p>
+                                    <p>
+                                        <b>Geotagging</b>
+                                        <span>Yes</span>
+                                    </p>
+                                    <p>
+                                        <b>Flight Logs</b> <span>In Separate Folder</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                       
+                        
+                    </ng-template>
+                </li>
+                <li ngbNavItem>
+                    <a ngbNavLink (click)="getHeightValue()">Upload</a>
+                    <ng-template ngbNavContent>
+                        <form >
+                            <div>
+                                <label for="imageFolder">Image Folder Path</label>
+                                <div class="upload_wrap-1" [style.width.%]='100'>
+                                    <p class="upload_wrap_p">
+                                        <img src="./../../../../assets/Icons/browse-icon.svg" alt="Image upload">
+                                        <span>Select a folder to upload images.</span>
+                                    </p>
+                                    <!-- Add the 'webkitdirectory' attribute to enable folder selection -->
+                                    <input #inputFile type="file" id="file"  multiple webkitdirectory directory (change)="onFileSelect($event)" />
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <button type="button" class="btn" (click)="onCancel()">Reset</button> &nbsp;
+                            </div>
+                        </form>
+                        <div class="overall-statusWrap">
+                            <h4>Audit Report <span>Fail / Total</span></h4>
+                            <div class="title_Wrap">
+                                <p>
+                                    <label *ngIf="imageDataArray.length >0">
+                                        <input type="checkbox" (change)="onCheckboxChange('total', $event)" />
+                                    </label>
+                                    Total Images :
+                                </p>
+                                <span>{{imageDataArray.length}}</span>
+                            </div>
+                            <div class="title_Wrap">
+                                <p>
+                                    <label *ngIf="altitudeFailArray.length >0">
+                                        <input type="checkbox" (change)="onCheckboxChange('altitude', $event)" />
+                                    </label>Height:
+                                </p>
+                                <span><b>{{altitudeFailArray.length}}</b> / {{imageDataArray.length}}</span></div>
+                            <div class="title_Wrap">
+                                <p>
+                                    <label *ngIf="speedFailArray.length >0">
+                                        <input type="checkbox" (change)="onCheckboxChange('speed', $event)" />
+                                    </label> Speed (5m/s) :
+                                </p>
+                                <span><b>{{speedFailArray.length}}</b> / {{imageDataArray.length}}</span>
+                            </div>
+                            <div class="title_Wrap">
+                                <p>
+                                    <label *ngIf="distanceFailArray.length >0">
+                                    <input type="checkbox" (change)="onCheckboxChange('distance', $event)" />
+                                </label> Overlapping (85%) :
+                                </p>
+                                <span><b>{{distanceFailArray.length}}</b> / {{imageDataArray.length}}</span>
+                            </div>
+                            <div class="title_Wrap">
+                                <p>
+                                    <label *ngIf="angleFailArray.length >0">
+                                        <input type="checkbox" (change)="onCheckboxChange('angle', $event)" />
+                                    </label> Recording Angle (90&deg;) :
+                                </p>
+                                <span><b>{{angleFailArray.length}}</b> / {{imageDataArray.length}}</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+            <div [ngbNavOutlet]="nav" class=""></div>
+        </div>
+      
+        <div class="col-md-8 side-map">
+            <div class="innerWrapper">
+                <!-- <ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false" class="nav-tabs"> -->
+                            <div class="map" #map id="map"></div>  
+                            <div class="tableView_data" [ngClass]="listActive ? 'active' : 'inactive'">
+                                <button class="BackArrow" (click)="listShowHide()">
+                                    <span class="material-symbols-outlined">arrow_back_ios</span>
+                               </button>
+                               <div class="side-map globalTable" *ngIf="filteredDataArray.length >0">
+                                <div class="scrollInTable table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <!-- <tr class="titleTop">
+                                                <th></th>
+                                                <th colspan="4">Image Details</th>
+                                            </tr> -->
+                                            <tr class="analytics_table_row">
+                                                <th>Name</th>
+                                                <th>Create Date</th>
+                                                <th>Altitude</th>
+                                                <th>Latitude</th>
+                                                <th>Longitude</th>
+                                                <th>Angle</th>
+                                                <th>Distance</th>
+                                                <th>Speed</th>
+                                                <th>Altitude Status</th>
+                                                <th>Angle Status</th>
+                                                <th>Distance Status</th>
+                                                <th>Speed Status</th>
+                                                <th>Overall Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of filteredDataArray">
+                                                <td>{{ item.name }}</td>
+                                                <td>{{ item.createDate }}</td>
+                                                <td>{{ item.altitude }}</td>
+                                                <td>{{ item.latitude }}</td>
+                                                <td>{{ item.longitude }}</td>
+                                                <td>{{ item.angle }}</td>
+                                                <td>{{ item.distance }}</td>
+                                                <td>{{ item.speed }}</td>
+                                                <td class="{{ item.altitudeStatus }}">{{ item.altitudeStatus }}</td>
+                                                <td class="{{ item.angleStatus }}">{{ item.angleStatus }}</td>
+                                                <td class="{{ item.distanceStatus }}">{{ item.distanceStatus }}</td>
+                                                <td class="{{ item.speedStatus }}">{{ item.speedStatus }}</td>
+                                                <td class="{{ item.overallStatus }}">{{ item.overallStatus }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+                    <!-- <li [ngbNavItem]="2">
+                        <button ngbNavLink>List View</button>
+                        <ng-template ngbNavContent>
+                            
+                        </ng-template>
+                    </li> -->
+                <!-- </ul> -->
+            </div>
+            <!-- <div [ngbNavOutlet]="nav" class="mt-1"></div> -->
+        </div>
+    </div>
+
+</div>
