@@ -1,0 +1,53 @@
+{
+  "name": "test-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^18.0.0",
+    "@angular/common": "^18.0.0",
+    "@angular/compiler": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/forms": "^18.0.0",
+    "@angular/material": "^18.2.7",
+    "@angular/platform-browser": "^18.0.0",
+    "@angular/platform-browser-dynamic": "^18.0.0",
+    "@angular/router": "^18.0.0",
+    "@angular/service-worker": "^18.0.0",
+    "@asymmetrik/ngx-leaflet": "^18.0.1",
+    "@material/dialog": "^14.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^17.0.1",
+    "@tmcw/togeojson": "^5.8.1",
+    "exifreader": "^4.23.7",
+    "leaflet": "^1.9.4",
+    "leaflet-kml": "^1.0.1",
+    "leaflet-measurable": "^0.1.0",
+    "leaflet-measure": "^3.1.0",
+    "leaflet.control.layers.tree": "^1.1.0",
+    "leaflet.fullscreen": "^3.0.2",
+    "leaflet.offline": "^3.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.0.3",
+    "@angular/cli": "^18.0.3",
+    "@angular/compiler-cli": "^18.0.0",
+    "@types/jasmine": "~5.1.0",
+    "@types/leaflet": "^1.9.12",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.4.2"
+  }
+}
